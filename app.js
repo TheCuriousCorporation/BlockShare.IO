@@ -20,23 +20,24 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 var job = new CronJob({
-    cronTime: '00 10 15 * * 0-6',
+    cronTime: '00 15 15 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
-            chain.getAddress(address, function(error, data) {
-        var balance = data[0].total.balance / 100000000.0;
-        client.messages.create({
-            to: '+12069998676',
-            from: '+12069716727',
-            body: 'You have ' + balance + ' Bitcoins in your wallet.',
-        }, function(error, message) {
-            if (error) {
-                console.log(error.message);
-            } else {
-                console.log(message.body);
-            }
-        });
-    }); 
+    	chain.getAddress(address, function(error, data) {
+    		var balance = data[0].total.balance / 100000000.0;
+    		client.messages.create({
+    			to: '+12069998676',
+    			from: '+12069716727',
+    			mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
+            	body: 'You have ' + balance + ' Bitcoins in your wallet.'
+        	}, function(error, message) {
+            	if (error) {
+                	console.log(error.message);
+            	} else {
+                	console.log(message.body);
+            	}
+        }	);
+    	}); 
 
     },
     start: true,
