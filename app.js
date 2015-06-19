@@ -20,7 +20,7 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 var job = new CronJob({
-    cronTime: '00 15 15 * * 0-6',
+    cronTime: '00 20 15 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
