@@ -67,8 +67,9 @@ conn.onopen = function (ev) {
 
 conn.onmessage = function (ev) {
   var x = JSON.parse(ev.data);
-  var data = x['payload']['received'] / 100000000.0;
-  if (data >= '0.00000000001') {
+  var data = x.payload.received / 100000000.0;
+  var confirm = x.payload.confirmations;
+    if (data >= '0.00000000001' && confirm <= '1') {
     client.messages.create({
         to: '+12069998676',
         from: '+12069716727',
@@ -90,7 +91,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('BLOCKSHARE.IO SMS');
+  response.send('BLOCKSHARE.IO SMS\nSign Up Today!');
 });
 
 app.listen(app.get('port'), function() {
