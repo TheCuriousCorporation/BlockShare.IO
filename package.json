@@ -9,12 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.13.1",
     "chain-node": "^3.1.2",
     "cron": "^1.0.9",
     "express": "^4.12.4",
-    "twilio": "^2.2.1"
+    "twilio": "^2.2.1",
+    "underscore": "^1.8.3",
+    "ws": "^0.7.2"
   },
-    "engines": {
+  "engines": {
     "node": "0.12.4"
   }
 }

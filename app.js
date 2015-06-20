@@ -1,3 +1,11 @@
+/* 
+  ____  _            _     ____  _                      ___ ___  
+ | __ )| | ___   ___| | __/ ___|| |__   __ _ _ __ ___  |_ _/ _ \ 
+ |  _ \| |/ _ \ / __| |/ /\___ \| '_ \ / _` | '__/ _ \  | | | | |
+ | |_) | | (_) | (__|   <  ___) | | | | (_| | | |  __/_ | | |_| |
+ |____/|_|\___/ \___|_|\_\|____/|_| |_|\__,_|_|  \___(_)___\___/ 
+                                                                 
+*/
 
 var express = require('express');
 var app = express();
@@ -14,6 +22,9 @@ var chain = new Chain({
     keySecret: '82ae4198214a0d8a6019b3fcf58471f9',
     blockChain: 'bitcoin'
 });
+
+var bodyParser = require('body-parser');
+var WebSocket = require('ws');
 
 /* Setting Timer */
 var CronJob = require('cron').CronJob;
@@ -37,14 +48,43 @@ var job = new CronJob({
             	} else {
                 	console.log(message.body);
             	}
-        }	);
+            });
     	}); 
-
     },
     start: true,
     timeZone: 'America/Los_Angeles' 
 });
 job.start();
+
+
+/* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
+var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
+
+conn.onopen = function (ev) {
+  var req = {type: "address", address: address, block_chain: "bitcoin"};
+  conn.send(JSON.stringify(req));
+};
+
+conn.onmessage = function (ev) {
+  var x = JSON.parse(ev.data);
+  var data = x['payload']['received'] / 100000000.0;
+  if (data >= '0.00000000001') {
+    client.messages.create({
+        to: '+12069998676',
+        from: '+12069716727',
+        body: 'You just received ' + data + ' Bitcoins HOLLA!',
+        mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+    }, function(error, message) {
+        if (error) {
+            console.log(error.message);
+        } else {
+            console.log(message.body);
+        }
+    });
+  } else {
+    console.log(data);
+  }
+};
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -54,5 +94,5 @@ app.get('/', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+  console.log('BlockShare.IO data running on port', app.get('port'));
 });
