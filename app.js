@@ -20,7 +20,7 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 var job = new CronJob({
-    cronTime: '00 00 */1 * * 0-6',
+    cronTime: '00 03 18 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
@@ -44,9 +44,6 @@ var job = new CronJob({
     timeZone: 'America/Los_Angeles' 
 });
 job.start();
-
-
-
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
