@@ -20,7 +20,7 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 var job = new CronJob({
-    cronTime: '00 */10 * * * 0-6',
+    cronTime: '00 30 8 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
@@ -30,7 +30,7 @@ var job = new CronJob({
     			to: '+12069998676',
     			from: '+12069716727',
     			mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-            	body: 'You have ' + balance + ' Bitcoins in your wallet. \nYou have sent ' + sent + ' bitcoins.'
+            	body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
         	}, function(error, message) {
             	if (error) {
                 	console.log(error.message);
