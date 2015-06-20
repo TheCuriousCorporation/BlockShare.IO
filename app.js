@@ -31,7 +31,7 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 var job = new CronJob({
-    cronTime: '00 30 8 * * 0-6',
+    cronTime: '00 30 11 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
@@ -69,7 +69,7 @@ conn.onmessage = function (ev) {
   var x = JSON.parse(ev.data);
   var data = x.payload.received / 100000000.0;
   var confirm = x.payload.confirmations;
-    if (data >= '0.00000000001' && confirm <= '1') {
+    if (data >= '0.00000000001' && confirm < '1') {
     client.messages.create({
         to: '+12069998676',
         from: '+12069716727',
