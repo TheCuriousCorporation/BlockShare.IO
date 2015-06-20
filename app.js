@@ -26,10 +26,11 @@ var chain = new Chain({
 var bodyParser = require('body-parser');
 var WebSocket = require('ws');
 
-/* Setting Timer */
+/* This code runs to send a daily update of a Bitcoin wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
+/* Setting Timer */
 var job = new CronJob({
     cronTime: '00 30 11 * * 0-6',
     //cronTime: '* * * * * *',
@@ -61,39 +62,39 @@ job.start();
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
 
 conn.onopen = function (ev) {
-  var req = {type: "address", address: address, block_chain: "bitcoin"};
-  conn.send(JSON.stringify(req));
+    var req = {type: "address", address: address, block_chain: "bitcoin"};
+    conn.send(JSON.stringify(req));
 };
 
 conn.onmessage = function (ev) {
-  var x = JSON.parse(ev.data);
-  var data = x.payload.received / 100000000.0;
-  var confirm = x.payload.confirmations;
+    var x = JSON.parse(ev.data);
+    var data = x.payload.received / 100000000.0;
+    var confirm = x.payload.confirmations;
     if (data >= '0.00000000001' && confirm < '1') {
-    client.messages.create({
-        to: '+12069998676',
-        from: '+12069716727',
-        body: 'You just received ' + data + ' Bitcoins HOLLA!',
-        mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
-    }, function(error, message) {
-        if (error) {
-            console.log(error.message);
-        } else {
-            console.log(message.body);
-        }
-    });
-  } else {
-    console.log(data);
-  }
+        client.messages.create({
+            to: '+12069998676',
+            from: '+12069716727',
+            body: 'You just received ' + data + ' Bitcoins HOLLA!',
+            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+        }, function(error, message) {
+            if (error) {
+                console.log(error.message);
+            } else {
+                console.log(message.body);
+            }
+        });
+    } else {
+        console.log(data);
+    }
 };
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('BLOCKSHARE.IO SMS\nSign Up Today!');
+    response.send('BLOCKSHARE.IO SMS\nSign Up Today!');
 });
 
 app.listen(app.get('port'), function() {
-  console.log('BlockShare.IO data running on port', app.get('port'));
+    console.log('BlockShare.IO data running on port', app.get('port'));
 });
