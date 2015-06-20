@@ -25,11 +25,12 @@ var job = new CronJob({
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
     		var balance = data[0].total.balance / 100000000.0;
+            var sent = data[0].total.sent / 100000000.0;
     		client.messages.create({
     			to: '+12069998676',
     			from: '+12069716727',
     			mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-            	body: 'You have ' + balance + ' Bitcoins in your wallet.'
+            	body: 'You have ' + balance + ' Bitcoins in your wallet. \nYou have sent ' + sent + ' bitcoins.'
         	}, function(error, message) {
             	if (error) {
                 	console.log(error.message);
