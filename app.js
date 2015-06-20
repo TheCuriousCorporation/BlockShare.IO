@@ -74,7 +74,7 @@ conn.onmessage = function (ev) {
         client.messages.create({
             to: '+12069998676',
             from: '+12069716727',
-            body: 'You just received ' + data + ' Bitcoins HOLLA!',
+            body: 'You just received ' + data + ' Bitcoins!',
             mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
         }, function(error, message) {
             if (error) {
