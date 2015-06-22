@@ -70,12 +70,12 @@ conn.onmessage = function (ev) {
     var x = JSON.parse(ev.data);
     var data = x.payload.received / 100000000.0;
     var confirm = x.payload.confirmations;
-    if (data >= '0.00000000001' && confirm <= '1') {
+    if (data >= '0.00000000001' && confirm < '1') {
         client.messages.create({
             to: '+12069998676',
             from: '+12069716727',
             body: 'You just received ' + data + ' Bitcoins!',
-            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+            //mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
         }, function(error, message) {
             if (error) {
                 console.log(error.message);
