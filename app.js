@@ -75,7 +75,8 @@ conn.onmessage = function (ev) {
             to: '+12069998676',
             from: '+12069716727',
             body: 'You just received ' + data + ' Bitcoins!',
-            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+            //mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+            mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
         }, function(error, message) {
             if (error) {
                 console.log(error.message);
