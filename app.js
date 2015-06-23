@@ -37,7 +37,7 @@ var job = new CronJob({
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
     		var balance = data[0].total.balance / 100000000.0;
-            var sent = data[0].total.sent / 100000000.0;
+        var sent = data[0].total.sent / 100000000.0;
     		client.messages.create({
     			to: '+12069998676',
     			from: '+12069716727',
