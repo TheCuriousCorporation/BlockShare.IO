@@ -26,6 +26,8 @@ var chain = new Chain({
 var bodyParser = require('body-parser');
 var WebSocket = require('ws');
 
+//var bitcoinPrice = "https://blockchain.info/ticker";
+
 /* This code runs to send a daily update of a Bitcoin wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
