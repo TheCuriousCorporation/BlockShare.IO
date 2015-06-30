@@ -76,7 +76,7 @@ conn.onmessage = function (ev) {
         client.messages.create({
             to: '+12069998676',
             from: '+12069716727',
-            body: 'You just received ' + data + ' Bitcoins!',
+            body: 'You just received ' + data + ' Bitcoins! ... PARTY TIME!',
             //mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
             //mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
         }, function(error, message) {
