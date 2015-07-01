@@ -23,7 +23,7 @@ var chain = new Chain({
     blockChain: 'bitcoin'
 });
 
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var WebSocket = require('ws');
 
 //var bitcoinPrice = "https://blockchain.info/ticker";
