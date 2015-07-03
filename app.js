@@ -32,9 +32,9 @@ var WebSocket = require('ws');
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
-/* Setting Timer */
-var job = new CronJob({
-    cronTime: '00 30 11 * * 0-6',
+/* Setting Timer for Morning Notification */
+var morningNotifcation = new CronJob({
+    cronTime: '00 35 11 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
@@ -57,7 +57,34 @@ var job = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles' 
 });
-job.start();
+morningNotifcation.start();
+
+
+/* Setting Timer for Evening Notification */
+var eveningNotifcation = new CronJob({
+    cronTime: '00 30 20 * * 0-6',
+    onTick: function() {
+        chain.getAddress(address, function(error, data) {
+            var balance = data[0].total.balance / 100000000.0;
+            var sent = data[0].total.sent / 100000000.0;
+            client.messages.create({
+                to: '+12069998676',
+                from: '+12069716727',
+                mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
+                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
+            }, function(error, message) {
+                if (error) {
+                    console.log(error.message);
+                } else {
+                    console.log(message.body);
+                }
+            });
+        }); 
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles' 
+});
+eveningNotifcation.start();
 
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
