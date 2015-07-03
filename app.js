@@ -34,7 +34,7 @@ var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
-    cronTime: '00 35 11 * * 0-6',
+    cronTime: '00 30 9 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
     	chain.getAddress(address, function(error, data) {
