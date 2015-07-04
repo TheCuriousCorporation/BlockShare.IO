@@ -62,7 +62,7 @@ morningNotifcation.start();
 
 /* Setting Timer for Evening Notification */
 var eveningNotifcation = new CronJob({
-    cronTime: '00 30 20 * * 0-6',
+    cronTime: '00 30 21 * * 0-6',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
             var balance = data[0].total.balance / 100000000.0;
