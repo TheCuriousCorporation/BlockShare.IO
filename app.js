@@ -44,7 +44,7 @@ var morningNotifcation = new CronJob({
     			to: '+12069998676',
     			from: '+12069716727',
     			mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-            	body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
+            	body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
         	}, function(error, message) {
             	if (error) {
                 	console.log(error.message);
