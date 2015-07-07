@@ -70,7 +70,8 @@ var eveningNotifcation = new CronJob({
             client.messages.create({
                 to: '+12069998676',
                 from: '+12069716727',
-                mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
+                mediaUrl: "https://media4.giphy.com/media/GMIbzgzyS4pws/200_s.gif",
+                //mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
                 body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
             }, function(error, message) {
                 if (error) {
