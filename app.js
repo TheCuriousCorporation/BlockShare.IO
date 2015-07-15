@@ -70,7 +70,7 @@ var afternoonNotifcation = new CronJob({
             client.messages.create({
                 to: '+12069998676',
                 from: '+12069716727',
-                mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
+                mediaUrl: "http://siliconangle.com/files/2013/12/xbitcoin-monopoly.gif.pagespeed.ic_.FCzCvrkFF8.png"
                 body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
             }, function(error, message) {
                 if (error) {
