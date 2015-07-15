@@ -24,7 +24,6 @@ var chain = new Chain({
 });
 
 //var bodyParser = require('body-parser');
-var WebSocket = require('ws');
 
 //var bitcoinPrice = "https://blockchain.info/ticker";
 
@@ -60,6 +59,34 @@ var morningNotifcation = new CronJob({
 morningNotifcation.start();
 
 
+/* Setting Timer for Afternoon Notification */
+var afternoonNotifcation = new CronJob({
+    cronTime: '00 30 15 * * 0-6',
+    //cronTime: '* * * * * *',
+    onTick: function() {
+        chain.getAddress(address, function(error, data) {
+            var balance = data[0].total.balance / 100000000.0;
+            var sent = data[0].total.sent / 100000000.0;
+            client.messages.create({
+                to: '+12069998676',
+                from: '+12069716727',
+                mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
+                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+            }, function(error, message) {
+                if (error) {
+                    console.log(error.message);
+                } else {
+                    console.log(message.body);
+                }
+            });
+        }); 
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles' 
+});
+afternoonNotifcation.start();
+
+
 /* Setting Timer for Evening Notification */
 var eveningNotifcation = new CronJob({
     cronTime: '00 30 21 * * 0-6',
@@ -87,8 +114,12 @@ var eveningNotifcation = new CronJob({
 });
 eveningNotifcation.start();
 
-
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
+
+/* WebSocket is currently not working and I am in the process of finding a workaround that
+    will work for the long term.
+
+var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
 
 conn.onopen = function (ev) {
@@ -118,6 +149,7 @@ conn.onmessage = function (ev) {
         console.log(data);
     }
 };
+*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
