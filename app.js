@@ -61,8 +61,8 @@ morningNotifcation.start();
 
 /* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
-    cronTime: '00 30 15 * * 0-6',
-    //cronTime: '* * * * * *',
+    //cronTime: '00 30 16 * * 0-6',
+    cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
             var balance = data[0].total.balance / 100000000.0;
@@ -70,7 +70,7 @@ var afternoonNotifcation = new CronJob({
             client.messages.create({
                 to: '+12069998676',
                 from: '+12069716727',
-                mediaUrl: "http://siliconangle.com/files/2013/12/xbitcoin-monopoly.gif.pagespeed.ic_.FCzCvrkFF8.png"
+                mediaUrl: "http://siliconangle.com/files/2013/12/xbitcoin-monopoly.gif.pagespeed.ic_.FCzCvrkFF8.png",
                 body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
             }, function(error, message) {
                 if (error) {
