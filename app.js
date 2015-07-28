@@ -43,7 +43,7 @@ var morningNotifcation = new CronJob({
     			to: '+12069998676',
     			from: '+12069716727',
     			mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-            	body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+            	body: 'Good Morning! You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
         	}, function(error, message) {
             	if (error) {
                 	console.log(error.message);
@@ -61,7 +61,7 @@ morningNotifcation.start();
 
 /* Setting Timer for Afternoon Notification */
 var noonTimer = new CronJob({
-    cronTime: '00 30 12 * * 0-6',
+    cronTime: '00 00 12 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
@@ -71,7 +71,7 @@ var noonTimer = new CronJob({
                 to: '+12069998676',
                 from: '+12069716727',
                 mediaUrl: "http://i.imgur.com/m3ftf8D.gif",
-                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+                body: 'The time is 12 Noon and You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
             }, function(error, message) {
                 if (error) {
                     console.log(error.message);
@@ -98,7 +98,7 @@ var afternoonNotifcation = new CronJob({
                 to: '+12069998676',
                 from: '+12069716727',
                 mediaUrl: "http://siliconangle.com/files/2013/12/xbitcoin-monopoly.gif.pagespeed.ic_.FCzCvrkFF8.png",
-                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+                body: 'It\'s 4:30pm and You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
             }, function(error, message) {
                 if (error) {
                     console.log(error.message);
@@ -126,7 +126,7 @@ var eveningNotifcation = new CronJob({
                 from: '+12069716727',
                 mediaUrl: "https://media4.giphy.com/media/GMIbzgzyS4pws/200_s.gif",
                 //mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
+                body: 'Why aren\'t you in bed? Is it because you have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins.'
             }, function(error, message) {
                 if (error) {
                     console.log(error.message);
