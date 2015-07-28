@@ -61,8 +61,8 @@ morningNotifcation.start();
 
 /* Setting Timer for Afternoon Notification */
 var noonTimer = new CronJob({
-    //cronTime: '00 30 12 * * 0-6',
-    cronTime: '* * * * * *',
+    cronTime: '00 30 12 * * 0-6',
+    //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
             var balance = data[0].total.balance / 100000000.0;
@@ -142,6 +142,9 @@ var eveningNotifcation = new CronJob({
 eveningNotifcation.start();
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
+
+/* WebSocket is currently not working and I am in the process of finding a workaround that
+    will work for the long term. */
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
