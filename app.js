@@ -60,6 +60,33 @@ morningNotifcation.start();
 
 
 /* Setting Timer for Afternoon Notification */
+var noonTimer = new CronJob({
+    //cronTime: '00 30 12 * * 0-6',
+    cronTime: '* * * * * *',
+    onTick: function() {
+        chain.getAddress(address, function(error, data) {
+            var balance = data[0].total.balance / 100000000.0;
+            var sent = data[0].total.sent / 100000000.0;
+            client.messages.create({
+                to: '+12069998676',
+                from: '+12069716727',
+                mediaUrl: "http://i.imgur.com/m3ftf8D.gif",
+                body: 'You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+            }, function(error, message) {
+                if (error) {
+                    console.log(error.message);
+                } else {
+                    console.log(message.body);
+                }
+            });
+        }); 
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles' 
+});
+noonTimer.start();
+
+/* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
     cronTime: '00 30 16 * * 0-6',
     //cronTime: '* * * * * *',
@@ -116,9 +143,6 @@ eveningNotifcation.start();
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
 
-/* WebSocket is currently not working and I am in the process of finding a workaround that
-    will work for the long term. */
-
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
 
@@ -136,8 +160,8 @@ conn.onmessage = function (ev) {
             to: '+12069998676',
             from: '+12069716727',
             body: 'You just received ' + data + ' Bitcoins!',
-            //mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
-            mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
+            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+            //mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
         }, function(error, message) {
             if (error) {
                 console.log(error.message);
