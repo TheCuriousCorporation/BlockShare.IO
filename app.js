@@ -71,7 +71,7 @@ var noonTimer = new CronJob({
                 to: '+12069998676',
                 from: '+12069716727',
                 mediaUrl: "http://i.imgur.com/m3ftf8D.gif",
-                body: 'The time is 12 Noon and You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
+                body: 'The time is 12:00pm and You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
             }, function(error, message) {
                 if (error) {
                     console.log(error.message);
