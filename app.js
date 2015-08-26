@@ -145,7 +145,7 @@ eveningNotifcation.start();
 
 /* This code is down for maintenance now. I am working on a fix since it doesn't seem to be very consistent. */
 
-/*
+
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
 
@@ -177,7 +177,7 @@ conn.onmessage = function (ev) {
     }
 };
 
-*/
+
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
