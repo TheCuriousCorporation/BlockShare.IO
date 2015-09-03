@@ -25,8 +25,6 @@ var chain = new Chain({
 
 //var bodyParser = require('body-parser');
 
-//var bitcoinPrice = "https://blockchain.info/ticker";
-
 /* This code runs to send a daily update of a Bitcoin wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
@@ -160,8 +158,8 @@ conn.onmessage = function (ev) {
             to: '+12069998676',
             from: '+12069716727',
             body: 'You just received ' + data + ' Bitcoins!',
-            //mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
-            mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
+            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
+            //mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
         }, function(error, message) {
             if (error) {
                 console.log(error.message);
