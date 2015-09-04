@@ -9,6 +9,7 @@
 
 var express = require('express');
 var app = express();
+
 /* Setting up Twilio Account ID and Authorization Tokens */
 var accountSid = 'AC4e2633202eec2d81ec69ce915a4cf09c';
 var authToken = 'b16545ba5d69db808155a46d08a3f256';
@@ -177,6 +178,7 @@ conn.onmessage = function (ev) {
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
 // Send Bitcoin as a small payment using SMS.
+// Making things even more awesome to use.
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
