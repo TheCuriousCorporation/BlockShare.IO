@@ -30,6 +30,10 @@ var chain = new Chain({
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
+/* Adding global variables */
+var args;
+var template;
+
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
     cronTime: '00 30 9 * * 0-6',
@@ -178,6 +182,20 @@ conn.onmessage = function (ev) {
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
 // Send Bitcoin as a small payment using SMS.
+
+/* Template code to build a transaction */
+
+chain.buildTransaction(args, function(err, resp) {
+// add build transaction code here 
+});
+
+chain.transact(args, function(err, resp) {
+    // add transaction code here.    
+});
+
+chain.sendTransaction(template, function(err, resp) {
+    // add send transaction code here.
+});
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
