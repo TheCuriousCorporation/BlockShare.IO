@@ -144,7 +144,7 @@ var eveningNotifcation = new CronJob({
 });
 eveningNotifcation.start();
 
-/* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
+/* This code runs when you receive any Bitcoin, sending an SMS to your phone number */
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
@@ -178,27 +178,10 @@ conn.onmessage = function (ev) {
 };
 
 
-
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
 // Send Bitcoin as a small payment using SMS.
 
-/* Template code to build a transaction */
-
-/*
-chain.buildTransaction(args, function(err, resp) {
-// add build transaction code here 
-});
-
-chain.transact(args, function(err, resp) {
-    // add transaction code here.    
-});
-
-chain.sendTransaction(template, function(err, resp) {
-    // add send transaction code here.
-});
-
-*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
