@@ -30,9 +30,6 @@ var chain = new Chain({
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
-/* Adding global variables */
-var args;
-var template;
 
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
@@ -144,7 +141,9 @@ var eveningNotifcation = new CronJob({
 });
 eveningNotifcation.start();
 
-/* This code runs when you receive any Bitcoin, sending an SMS to your phone number
+
+/* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
+/* Should be fixed now */
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
@@ -175,8 +174,8 @@ conn.onmessage = function (ev) {
     } else {
         console.log(data);
     }
+
 }; 
-*/
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
