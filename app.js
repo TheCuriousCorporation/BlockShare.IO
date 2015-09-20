@@ -144,7 +144,7 @@ var eveningNotifcation = new CronJob({
 });
 eveningNotifcation.start();
 
-/* This code runs when you receive any Bitcoin, sending an SMS to your phone number */
+/* This code runs when you receive any Bitcoin, sending an SMS to your phone number
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
@@ -175,8 +175,8 @@ conn.onmessage = function (ev) {
     } else {
         console.log(data);
     }
-};
-
+}; 
+*/
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
