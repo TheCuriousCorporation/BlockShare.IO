@@ -143,7 +143,7 @@ eveningNotifcation.start();
 
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
-/* Should be fixed now */
+/* Still not working for some odd reason. Will look into it. 
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
@@ -176,6 +176,8 @@ conn.onmessage = function (ev) {
     }
 
 }; 
+
+*/
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
