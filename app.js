@@ -180,6 +180,53 @@ conn.onmessage = function (ev) {
 // Sending SMS from a personal number to receive balance whenever you are curious.
 // Send Bitcoin as a small payment using SMS.
 
+// Building a transaction
+
+/*
+var args;
+var addressSend;
+var amount;
+var privateKeys;
+
+template = {
+    inputs: {
+        signatures_required: 1,
+        signatures: [{
+            address: address,
+
+        }],
+        miner_fee: 10000,
+    }
+}
+
+chain.transact(args, function(err, resp) {
+
+});
+
+chain.buildTransaction({
+    inputs: [{
+        address: address
+    }],
+    outputs: [{
+        address: addressSend,
+        amount: amount;
+    }]
+});
+
+chain.sendTransaction({
+    inputs: [{
+        signatures_required: 1,
+        signatures: [{
+            address: addressSend
+        }]
+    }],
+    miner_fee: 10000,
+    unsigned_hex: ""
+}, function(err, resp) {
+    console.log(resp);
+});
+*/
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
