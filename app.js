@@ -30,7 +30,6 @@ var chain = new Chain({
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 
-
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
     cronTime: '00 30 9 * * 0-6',
@@ -178,14 +177,14 @@ conn.onmessage = function (ev) {
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
-// Send Bitcoin as a small payment using SMS.
 
-// Building a transaction
+
+// Send Bitcoin as a small payment using SMS.
+// Building a transaction Test Code
 
 /*
-var args;
-var addressSend;
-var amount;
+
+var addressSend; // Create a test wallet to send this too.
 var privateKeys;
 
 template = {
@@ -199,34 +198,38 @@ template = {
     }
 }
 
-chain.transact(args, function(err, resp) {
-
+chain.transact(template, function(err, data) {
+    console.log(data);
 });
 
 chain.buildTransaction({
-    inputs: [{
-        address: address
-    }],
-    outputs: [{
-        address: addressSend,
-        amount: amount;
-    }]
+    inputs: [{ address: address }],
+    outputs: [{ address: addressSend, amount: amount; }]
 });
 
 chain.sendTransaction({
-    inputs: [{
-        signatures_required: 1,
-        signatures: [{
-            address: addressSend
-        }]
+    inputs: [{ signatures_required: 1, 
+        signatures: [{ address: addressSend }]
     }],
     miner_fee: 10000,
     unsigned_hex: ""
-}, function(err, resp) {
-    console.log(resp);
+}, function(err, data) {
+    // Sending the transaction via SMS
+    var amount = 10000;
+    client.messages.create({
+        to: '+12069998676',
+        from: '+12069716727',
+        body: 'You are sending ' + amount + ' to another wallet'
+    }, function(error, message) {
+        if (error) {
+            console.log(error.message);
+        } else {
+            console.log(message.body)
+        }
+    });
 });
-*/
 
+*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
