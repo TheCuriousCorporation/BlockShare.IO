@@ -204,7 +204,7 @@ chain.transact(template, function(err, data) {
 
 chain.buildTransaction({
     inputs: [{ address: address }],
-    outputs: [{ address: addressSend, amount: amount; }]
+    outputs: [{ address: addressSend, amount: 10000; }]
 });
 
 chain.sendTransaction({
