@@ -186,6 +186,7 @@ conn.onmessage = function (ev) {
 
 var addressSend; // Create a test wallet to send this too.
 var privateKeys;
+var amount = ""; // This variable should be divided by 100000000.0
 
 template = {
     inputs: {
@@ -204,7 +205,7 @@ chain.transact(template, function(err, data) {
 
 chain.buildTransaction({
     inputs: [{ address: address }],
-    outputs: [{ address: addressSend, amount: 10000; }]
+    outputs: [{ address: addressSend, amount: amount; }]
 });
 
 chain.sendTransaction({
