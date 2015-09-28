@@ -188,7 +188,7 @@ var addressSend; // Create a test wallet to send this too.
 var privateKeys;
 var amount = ""; // This variable should be divided by 100000000.0
 
-template = {
+var templateOne = {
     inputs: {
         signatures_required: 1,
         signatures: [{
@@ -199,10 +199,30 @@ template = {
     }
 }
 
+var templateTwo =  {
+    inputs: [
+      {
+        address: address
+      }
+    ],
+    outputs: [
+      {
+        address: addressSend,
+        amount: 40000
+      }
+    ]
+  }
+
 chain.transact(template, function(err, data) {
     console.log(data);
 });
 
+chain.buildTransaction(templateTwo, function(err, data) {
+    console.log(data); 
+});
+
+
+// Don't use this function
 chain.buildTransaction({
     inputs: [{ address: address }],
     outputs: [{ address: addressSend, amount: amount; }]
@@ -233,16 +253,6 @@ chain.sendTransaction({
 */
 
 
-// BlockCypher Code
-
-/*
-var cypher = require('blockcypher-node');
-
-cypher.get('https://api.blockcypher.com/v1/btc/main/addrs/1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo/balance')
-    .then(function(d) {
-        console.log(d);
-    });
-*/
 
 
 app.set('port', (process.env.PORT || 5000));
