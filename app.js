@@ -185,7 +185,7 @@ conn.onmessage = function (ev) {
 /*
 
 var addressSend; // Create a test wallet to send this too.
-var privateKeys;
+var privateKeys = ""; // The address to send the bitcoin to.
 var amount = ""; // This variable should be divided by 100000000.0
 
 var templateOne = {
