@@ -232,19 +232,6 @@ chain.sendTransaction({
 
 */
 
-
-// BlockCypher Code
-
-/*
-var cypher = require('blockcypher-node');
-
-cypher.get('https://api.blockcypher.com/v1/btc/main/addrs/1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo/balance')
-    .then(function(d) {
-        console.log(d);
-    });
-*/
-
-
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
