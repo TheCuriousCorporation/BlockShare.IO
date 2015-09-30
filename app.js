@@ -186,7 +186,7 @@ conn.onmessage = function (ev) {
 
 var addressSend; // Create a test wallet to send this too.
 var privateKeys = ""; // The address to send the bitcoin to.
-var amount = ""; // This variable should be divided by 100000000.0
+var amount = 10000 / 100000000.0; // This variable should be divided by 100000000.0
 
 var templateOne = {
     inputs: {
@@ -213,19 +213,27 @@ var templateTwo =  {
     ]
   }
 
-chain.transact(template, function(err, data) {
-    console.log(data);
+chain.transact(templateOne, function(error, data) {
+    if (error) {
+        return error;
+    } else {
+        console.log(data);
+    }
 });
 
-chain.buildTransaction(templateTwo, function(err, data) {
-    console.log(data); 
+chain.buildTransaction(templateTwo, function(error, data) {
+    if (error) {
+        return error;
+    } else {
+        console.log(data);
+    }
 });
 
 
 // Don't use this function
 chain.buildTransaction({
     inputs: [{ address: address }],
-    outputs: [{ address: addressSend, amount: amount; }]
+    outputs: [{ address: addressSend, amount: amount }]
 });
 
 chain.sendTransaction({
@@ -234,7 +242,7 @@ chain.sendTransaction({
     }],
     miner_fee: 10000,
     unsigned_hex: ""
-}, function(err, data) {
+}, function(error, data) {
     // Sending the transaction via SMS
     var amount = 10000;
     client.messages.create({
