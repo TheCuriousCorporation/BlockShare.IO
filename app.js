@@ -24,8 +24,6 @@ var chain = new Chain({
     blockChain: 'bitcoin'
 });
 
-//var bodyParser = require('body-parser');
-
 /* This code runs to send a daily update of a Bitcoin wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
@@ -184,8 +182,8 @@ conn.onmessage = function (ev) {
 
 /*
 
-var addressSend; // Create a test wallet to send this too.
-var privateKeys = ""; // The address to send the bitcoin to.
+var addressSend = "mkoo4R7gEMHDr3mNdKwzKVV7x3zjicFdyP"; // Create a test wallet to send this too.
+var privateKeys = "38c5ba821a19f45326f30a4225f4e173d54cc3503bc1d0a985075a293bb4aa2a"; // The address to send the bitcoin to.
 var amount = 10000 / 100000000.0; // This variable should be divided by 100000000.0
 
 var templateOne = {
