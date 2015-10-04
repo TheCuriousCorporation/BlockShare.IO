@@ -194,6 +194,7 @@ var templateOne = {
 
         }],
         miner_fee: 10000,
+        amount: amount
     }
 }
 
@@ -212,7 +213,8 @@ var templateTwo =  {
   }
 
 chain.transact(templateOne, function(error, data) {
-    // Add Code here.
+    var transactHash = data[0].transaction_hash;
+    console.log(trnasactHash);
 });
 
 chain.buildTransaction(templateTwo, function(error, data) {
