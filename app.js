@@ -176,8 +176,27 @@ conn.onmessage = function (ev) {
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
 // Writing code for send template in another JS file.
+/*
 
+var amount = 10000;
+var sendAddress = '';
 
+var template = [{
+    input: [{
+        address: address
+    }],
+    output: [{
+        address: sendAddress,
+        amount: amount
+    }]
+}];
+
+chain.transact(template, function(data) {
+    var hash = data[0].transaction_hash;
+    console.log(hash);
+})
+
+*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
