@@ -173,9 +173,8 @@ conn.onmessage = function (ev) {
 
 }; 
 
-/* Code to Add */
-// Sending SMS from a personal number to receive balance whenever you are curious.
-// Need to fix this code pronto.
+/* Need to add code to implement a transaction through SMS. */
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
