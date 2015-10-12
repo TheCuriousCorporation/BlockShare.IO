@@ -174,6 +174,7 @@ conn.onmessage = function (ev) {
 }; 
 */
 /* Need to add code to implement a transaction through SMS. */
+/* Check why code is not properly running today. */
 
 
 app.set('port', (process.env.PORT || 5000));
