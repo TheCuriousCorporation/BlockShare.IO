@@ -176,6 +176,31 @@ conn.onmessage = function (ev) {
 
 /* Need to add code to implement a transaction through SMS. */
 
+// Here is the starter template
+
+/*
+var sendAddress = '';
+var privateKey = '';
+
+var template = {
+    inputs: [{
+        address: address
+        private_key: privateKey
+    }],
+    outputs: [{
+        address: sendAddress,
+        amount: 50000
+    }]
+}
+
+chain.transact(template, function(err, data) {
+    if (err) {
+        console.log("oops!");
+    } else {
+        console.log(data);
+    }
+});
+*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
