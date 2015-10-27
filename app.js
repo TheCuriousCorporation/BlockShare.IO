@@ -175,35 +175,6 @@ conn.onmessage = function (ev) {
 }; 
 
 /* Need to add code to implement a transaction through SMS. */
-/* Transaction Template */
-
-// Address <= We can use the address variable assigned above
-//var sendAddress = ''; // <= This is the address we are sending the Bitcoin to.
-//var privateKey = ''; // <= We need the private key from our Address in order to send any Bitcoin.
-//var amount = 100000; // <= This is the amount of Bitcoin we are sending in the first place.
-
-/* Here is the Chain Transaction Template */
-/*
-var template = {
-    inputs: [{
-        address: address
-    }],
-    outputs: [{
-        address: sendAddress,
-        amount: amount
-    }]
-};
-
-/* The Chain function that will send the transaction
-chain.transact(template, function(err, data) {
-    if (err) {
-        console.log(err);
-    } else {
-        var hash = data.transaction_hash;
-        console.log("The transaction is complete. Here is the hash: " + hash);
-    }
-});
-*/
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
