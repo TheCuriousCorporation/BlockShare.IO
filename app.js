@@ -175,16 +175,7 @@ conn.onmessage = function (ev) {
 }; 
 
 /* Need to add code to implement a transaction through SMS. */
-
-/*
-chain.transact(args, function(err, data) {
-    if (err) {
-        return err;
-    } else {
-        return data;
-    }
-});
-*/
+/* Add a Bitcoin price point to be sent as a daily SMS update. */
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
