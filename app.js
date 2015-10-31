@@ -31,6 +31,37 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
+/* Pricing notification sent via SMS */
+var priceTimeMorning = new CronJob({
+    //cronTime: '* * * * * *',
+    cronTime: '00 00 9 * * 0-6',
+    onTick: function() {
+        request({
+            url: url,
+            json: true
+        }, function(error, response, data) {
+            var btcPrice = data.bpi.USD.rate_float;
+            if (!error && response.statusCode == 200) {
+                client.messages.create({
+                    to: '+12069998676',
+                    from: '+12069716727',
+                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    body: 'The price is $' + btcPrice
+                }, function(error, message) {
+                    if (error) {
+                        console.log(error.message)
+                    } else {
+                        console.log(message.body);
+                    }
+                });
+            }
+        });
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles'
+});
+priceTimeMorning.start();
+
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
     cronTime: '00 30 9 * * 0-6',
@@ -87,9 +118,9 @@ var noonTimer = new CronJob({
 noonTimer.start();
 
 /* Pricing notification sent via SMS */
-var priceTime = new CronJob({
+var priceTimeAfternoon = new CronJob({
     //cronTime: '* * * * * *',
-    cronTime: '00 30 13 * * 0-6',
+    cronTime: '00 00 13 * * 0-6',
     onTick: function() {
         request({
             url: url,
@@ -115,7 +146,7 @@ var priceTime = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles'
 });
-priceTime.start();
+priceTimeAfternoon.start();
 
 /* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
@@ -144,6 +175,37 @@ var afternoonNotifcation = new CronJob({
 });
 afternoonNotifcation.start();
 
+/* Pricing notification sent via SMS */
+var priceTimeEvening = new CronJob({
+    //cronTime: '* * * * * *',
+    cronTime: '00 00 18 * * 0-6',
+    onTick: function() {
+        request({
+            url: url,
+            json: true
+        }, function(error, response, data) {
+            var btcPrice = data.bpi.USD.rate_float;
+            if (!error && response.statusCode == 200) {
+                client.messages.create({
+                    to: '+12069998676',
+                    from: '+12069716727',
+                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    body: 'The price is $' + btcPrice
+                }, function(error, message) {
+                    if (error) {
+                        console.log(error.message)
+                    } else {
+                        console.log(message.body);
+                    }
+                });
+            }
+        });
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles'
+});
+priceTimeEvening.start();
+
 
 /* Setting Timer for Evening Notification */
 var eveningNotifcation = new CronJob({
@@ -171,6 +233,37 @@ var eveningNotifcation = new CronJob({
     timeZone: 'America/Los_Angeles' 
 });
 eveningNotifcation.start();
+
+/* Pricing notification sent via SMS */
+var priceTimeNight = new CronJob({
+    //cronTime: '* * * * * *',
+    cronTime: '00 00 21 * * 0-6',
+    onTick: function() {
+        request({
+            url: url,
+            json: true
+        }, function(error, response, data) {
+            var btcPrice = data.bpi.USD.rate_float;
+            if (!error && response.statusCode == 200) {
+                client.messages.create({
+                    to: '+12069998676',
+                    from: '+12069716727',
+                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    body: 'The price is $' + btcPrice
+                }, function(error, message) {
+                    if (error) {
+                        console.log(error.message)
+                    } else {
+                        console.log(message.body);
+                    }
+                });
+            }
+        });
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles'
+});
+priceTimeNight.start();
 
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
