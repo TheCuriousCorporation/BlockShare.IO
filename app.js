@@ -25,13 +25,13 @@ var chain = new Chain({
     blockChain: 'bitcoin'
 });
 
-//var bodyParser = require('body-parser');
 
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
+/* Pricing notification sent via SMS */
 var priceTime = new CronJob({
     cronTime: '00 30 13 * * 0-6',
     onTick: function() {
