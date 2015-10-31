@@ -31,37 +31,6 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
-/* Pricing notification sent via SMS */
-var priceTime = new CronJob({
-    //cronTime: '* * * * * *',
-    cronTime: '00 20 13 * * 0-6',
-    onTick: function() {
-        request({
-            url: url,
-            json: true
-        }, function(error, response, data) {
-            var btcPrice = data.bpi.USD.rate_float;
-            if (!error && response.statusCode == 200) {
-                client.messages.create({
-                    to: '+12069998676',
-                    from: '+12069716727',
-                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
-                    body: 'The price is $' + btcPrice
-                }, function(error, message) {
-                    if (error) {
-                        console.log(error.message)
-                    } else {
-                        console.log(message.body);
-                    }
-                });
-            }
-        });
-    },
-    start: true,
-    timeZone: 'America/Los_Angeles'
-});
-priceTime.start();
-
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
     cronTime: '00 30 9 * * 0-6',
@@ -116,6 +85,37 @@ var noonTimer = new CronJob({
     timeZone: 'America/Los_Angeles' 
 });
 noonTimer.start();
+
+/* Pricing notification sent via SMS */
+var priceTime = new CronJob({
+    //cronTime: '* * * * * *',
+    cronTime: '00 25 13 * * 0-6',
+    onTick: function() {
+        request({
+            url: url,
+            json: true
+        }, function(error, response, data) {
+            var btcPrice = data.bpi.USD.rate_float;
+            if (!error && response.statusCode == 200) {
+                client.messages.create({
+                    to: '+12069998676',
+                    from: '+12069716727',
+                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    body: 'The price is $' + btcPrice
+                }, function(error, message) {
+                    if (error) {
+                        console.log(error.message)
+                    } else {
+                        console.log(message.body);
+                    }
+                });
+            }
+        });
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles'
+});
+priceTime.start();
 
 /* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
