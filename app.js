@@ -89,7 +89,7 @@ noonTimer.start();
 /* Pricing notification sent via SMS */
 var priceTime = new CronJob({
     //cronTime: '* * * * * *',
-    cronTime: '00 25 13 * * 0-6',
+    cronTime: '00 30 13 * * 0-6',
     onTick: function() {
         request({
             url: url,
