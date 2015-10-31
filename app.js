@@ -26,9 +26,13 @@ var chain = new Chain({
     blockChain: 'bitcoin'
 });
 
+<<<<<<< HEAD
 //var bodyParser = require('body-parser');
 
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
+=======
+/* This code runs to send a daily update of a Bitcoin wallet amount. */
+>>>>>>> a5f8dadbfe297649914b1e93a22893f955f83f98
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
@@ -173,7 +177,8 @@ var eveningNotifcation = new CronJob({
 eveningNotifcation.start();
 
 
-/* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
+/* This code runs when you receive any Bitcoin, sending an SMS to your phone number. */
+
 
 var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
@@ -207,9 +212,14 @@ conn.onmessage = function (ev) {
 
 }; 
 
+<<<<<<< HEAD
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
 
+=======
+/* Need to add code to implement a transaction through SMS. */
+/* Add a Bitcoin price point to be sent as a daily SMS update. */
+>>>>>>> a5f8dadbfe297649914b1e93a22893f955f83f98
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
