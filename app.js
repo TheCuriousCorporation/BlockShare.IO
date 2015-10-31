@@ -33,7 +33,7 @@ var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
 /* Pricing notification sent via SMS */
 var priceTime = new CronJob({
-    cronTime: '00 30 13 * * 0-6',
+    cronTime: '00 15 13 * * 0-6',
     onTick: function() {
         request({
             url: url,
