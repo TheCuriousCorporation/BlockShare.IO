@@ -33,7 +33,8 @@ var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
 
 /* Pricing notification sent via SMS */
 var priceTime = new CronJob({
-    cronTime: '00 15 13 * * 0-6',
+    //cronTime: '* * * * * *',
+    cronTime: '00 20 13 * * 0-6',
     onTick: function() {
         request({
             url: url,
@@ -45,7 +46,7 @@ var priceTime = new CronJob({
                     to: '+12069998676',
                     from: '+12069716727',
                     mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
-                    body: 'The price is $' + btcPrice,
+                    body: 'The price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
                         console.log(error.message)
