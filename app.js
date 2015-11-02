@@ -191,7 +191,8 @@ var priceTimeEvening = new CronJob({
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
-                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    mediaUrl: 'http://2.bp.blogspot.com/-Ng0XEb4dDlc/UuW_IJllexI/AAAAAAAACig/kmRwIsCsIYE/s1600/btc+1.gif',
                     body: 'The price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
@@ -250,7 +251,8 @@ var priceTimeNight = new CronJob({
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
-                    mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
+                    mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
                     body: 'The price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
