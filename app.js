@@ -29,7 +29,7 @@ var chain = new Chain({
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
-var url = "http://api.coindesk.com/v1/bpi/currentprice.json";
+var url = 'https://api.coinbase.com/v2/prices/buy';
 
 /* Pricing notification sent via SMS */
 var priceTimeMorning = new CronJob({
@@ -40,14 +40,14 @@ var priceTimeMorning = new CronJob({
             url: url,
             json: true
         }, function(error, response, data) {
-            var btcPrice = data.bpi.USD.rate_float;
+            var btcPrice = data.data.amount;
             if (!error && response.statusCode == 200) {
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
                     //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
                     mediaUrl: 'http://2.bp.blogspot.com/-Ng0XEb4dDlc/UuW_IJllexI/AAAAAAAACig/kmRwIsCsIYE/s1600/btc+1.gif',
-                    body: 'The current Bitcoin price is $' + btcPrice
+                    body: 'The current Bitcoin buy price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
                         console.log(error.message)
@@ -127,14 +127,14 @@ var priceTimeAfternoon = new CronJob({
             url: url,
             json: true
         }, function(error, response, data) {
-            var btcPrice = data.bpi.USD.rate_float;
+            var btcPrice = data.data.amount;
             if (!error && response.statusCode == 200) {
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
                     mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
                     //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
-                    body: 'The price is $' + btcPrice
+                    body: 'The current Bitcoin buy price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
                         console.log(error.message)
@@ -186,14 +186,14 @@ var priceTimeEvening = new CronJob({
             url: url,
             json: true
         }, function(error, response, data) {
-            var btcPrice = data.bpi.USD.rate_float;
+            var btcPrice = data.data.amount;
             if (!error && response.statusCode == 200) {
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
                     //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
                     mediaUrl: 'http://2.bp.blogspot.com/-Ng0XEb4dDlc/UuW_IJllexI/AAAAAAAACig/kmRwIsCsIYE/s1600/btc+1.gif',
-                    body: 'The price is $' + btcPrice
+                    body: 'The current Bitcoin buy price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
                         console.log(error.message)
@@ -246,14 +246,14 @@ var priceTimeNight = new CronJob({
             url: url,
             json: true
         }, function(error, response, data) {
-            var btcPrice = data.bpi.USD.rate_float;
+            var btcPrice = data.data.amount;
             if (!error && response.statusCode == 200) {
                 client.messages.create({
                     to: '+12069998676',
                     from: '+12069716727',
                     //mediaUrl: 'http://www.bitcoincasino.org/wp-content/uploads/2013/07/bitcoin1-150x150.jpg',
                     mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
-                    body: 'The price is $' + btcPrice
+                    body: 'The current Bitcoin buy price is $' + btcPrice
                 }, function(error, message) {
                     if (error) {
                         console.log(error.message)
