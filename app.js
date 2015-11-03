@@ -94,7 +94,6 @@ morningNotifcation.start();
 /* Setting Timer for Afternoon Notification */
 var noonTimer = new CronJob({
     cronTime: '00 00 12 * * 0-6',
-    //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
             var balance = data[0].total.balance / 100000000.0;
@@ -120,7 +119,6 @@ noonTimer.start();
 
 /* Pricing notification sent via SMS */
 var priceTimeAfternoon = new CronJob({
-    //cronTime: '* * * * * *',
     cronTime: '00 00 13 * * 0-6',
     onTick: function() {
         request({
@@ -153,7 +151,6 @@ priceTimeAfternoon.start();
 /* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
     cronTime: '00 30 16 * * 0-6',
-    //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
             var balance = data[0].total.balance / 100000000.0;
@@ -179,7 +176,6 @@ afternoonNotifcation.start();
 
 /* Pricing notification sent via SMS */
 var priceTimeEvening = new CronJob({
-    //cronTime: '* * * * * *',
     cronTime: '00 00 18 * * 0-6',
     onTick: function() {
         request({
@@ -239,7 +235,6 @@ eveningNotifcation.start();
 
 /* Pricing notification sent via SMS */
 var priceTimeNight = new CronJob({
-    //cronTime: '* * * * * *',
     cronTime: '00 00 21 * * 0-6',
     onTick: function() {
         request({
