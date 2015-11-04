@@ -31,7 +31,7 @@ var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = 'https://api.coinbase.com/v2/prices/buy';
 
-/* Pricing notification sent via SMS */
+/* Pricing notification sent via SMS
 var priceTimeMorning = new CronJob({
     //cronTime: '* * * * * *',
     cronTime: '00 00 9 * * 0-6',
@@ -61,7 +61,7 @@ var priceTimeMorning = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles'
 });
-priceTimeMorning.start();
+priceTimeMorning.start(); */
 
 /* Setting Timer for Morning Notification */
 var morningNotifcation = new CronJob({
@@ -117,7 +117,7 @@ var noonTimer = new CronJob({
 });
 noonTimer.start();
 
-/* Pricing notification sent via SMS */
+/* Pricing notification sent via SMS
 var priceTimeAfternoon = new CronJob({
     cronTime: '00 00 13 * * 0-6',
     onTick: function() {
@@ -146,7 +146,7 @@ var priceTimeAfternoon = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles'
 });
-priceTimeAfternoon.start();
+priceTimeAfternoon.start(); */
 
 /* Setting Timer for Afternoon Notification */
 var afternoonNotifcation = new CronJob({
@@ -174,7 +174,7 @@ var afternoonNotifcation = new CronJob({
 });
 afternoonNotifcation.start();
 
-/* Pricing notification sent via SMS */
+/* Pricing notification sent via SMS 
 var priceTimeEvening = new CronJob({
     cronTime: '00 00 18 * * 0-6',
     onTick: function() {
@@ -203,7 +203,7 @@ var priceTimeEvening = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles'
 });
-priceTimeEvening.start();
+priceTimeEvening.start(); */
 
 
 /* Setting Timer for Evening Notification */
@@ -233,7 +233,7 @@ var eveningNotifcation = new CronJob({
 });
 eveningNotifcation.start();
 
-/* Pricing notification sent via SMS */
+/* Pricing notification sent via SMS 
 var priceTimeNight = new CronJob({
     cronTime: '00 00 21 * * 0-6',
     onTick: function() {
@@ -262,7 +262,7 @@ var priceTimeNight = new CronJob({
     start: true,
     timeZone: 'America/Los_Angeles'
 });
-priceTimeNight.start();
+priceTimeNight.start(); */
 
 
 /* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
