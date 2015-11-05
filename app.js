@@ -30,6 +30,7 @@ var chain = new Chain({
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = 'https://api.coinbase.com/v2/prices/buy';
+var spot = 'https://api.coinbase.com/v2/prices/spot';
 
 /* Pricing notification sent via SMS
 var priceTimeMorning = new CronJob({
