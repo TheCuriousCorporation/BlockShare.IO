@@ -79,19 +79,22 @@ var morningNotifcation = new CronJob({
     //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
-            var balance = data[0].total.balance / 100000000.0;
+            var getBalance = data[0].total.balance / 100000000.0;
+            var balance = getBalance.toFixed(4);
             request({
-                url: buy,
+                url: spot,
                 json: true
             }, function(error, response, data) {
                 var price = data.data.amount;
                 if (!error && response.statusCode == 200) {
-                    var newBalance = price * balance;
+                    var combineBalance = price * balance;
+                    var newBalance = combineBalance.toFixed(2)
                     client.messages.create({
                         to: '+12069998676',
                         from: '+12069716727',
                         mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
-                        body: 'You have a balance of $' + newBalance + ' or (' + balance + ') Bitcoins in your wallet.'
+                        body: 'You have a balance of $' + newBalance + ' or (' + balance 
+                                + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
                     }, function(error, message) {
                         if (error) {
                             console.log(error.message)
@@ -214,6 +217,38 @@ var priceNotificationEvening = new CronJob({
 });
 priceNotificationEvening.start()
 
+/* Bitcoin Price Volatility SMS Notification */
+var VolatilityIndex = new CronJob({
+    cronTime: '00 00 18 * * 0-6',
+    //cronTime: '* * * * * *',
+    onTick: function() {
+        request({
+            url: volatility,
+            json: true
+        }, function(error, response, data) {
+            var str = data.Volatility;
+            var vol = str.toFixed(2);
+            if (!error && response.statusCode == 200) {
+                client.messages.create({
+                    to: '+12069998676',
+                    from: '+12069716727',
+                    mediaUrl: 'http://i.imgur.com/m3ftf8D.gif',
+                    body: 'The daily Bitcoin Volatility Index is at ' + vol + '%.'
+                }, function(error, message) {
+                    if (error) {
+                        console.log(error.message);
+                    } else {
+                        console.log(message.body);
+                    }
+                });
+            }
+        });
+    },
+    start: true,
+    timeZone: 'America/Los_Angeles'     
+});
+VolatilityIndex.start()
+
 /* Pricing notification sent via SMS */
 var priceNotificationNight = new CronJob({
     cronTime: '00 00 21 * * 0-6',
@@ -259,19 +294,22 @@ var eveningNotifcation = new CronJob({
     //cronTime: '* * * * * *',
     onTick: function() {
         chain.getAddress(address, function(error, data) {
-            var balance = data[0].total.balance / 100000000.0;
+            var getBalance = data[0].total.balance / 100000000.0;
+            var balance = getBalance.toFixed(4);
             request({
-                url: buy,
+                url: spot,
                 json: true
             }, function(error, response, data) {
                 var price = data.data.amount;
                 if (!error && response.statusCode == 200) {
-                    var newBalance = price * balance;
+                    var combineBalance = price * balance;
+                    var newBalance = combineBalance.toFixed(2);
                     client.messages.create({
                         to: '+12069998676',
                         from: '+12069716727',
                         mediaUrl: "https://media4.giphy.com/media/GMIbzgzyS4pws/200_s.gif",
-                        body: 'You have a balance of $' + newBalance + ' or (' + balance + ') Bitcoins in your wallet.'
+                        body: 'You have a balance of $' + newBalance + ' or (' + balance 
+                                + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
                     }, function(error, message) {
                         if (error) {
                             console.log(error.message)
