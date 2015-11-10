@@ -111,33 +111,6 @@ var morningNotifcation = new CronJob({
 });
 morningNotifcation.start();
 
-
-/* Setting Timer for Afternoon Notification */
-var noonTimer = new CronJob({
-    cronTime: '00 00 12 * * 0-6',
-    onTick: function() {
-        chain.getAddress(address, function(error, data) {
-            var balance = data[0].total.balance / 100000000.0;
-            var sent = data[0].total.sent / 100000000.0;
-            client.messages.create({
-                to: '+12069998676',
-                from: '+12069716727',
-                mediaUrl: "http://i.imgur.com/m3ftf8D.gif",
-                body: 'The time is 12:00pm and You have ' + balance + ' Bitcoins in your wallet. You have sent ' + sent + ' bitcoins to another wallet.'
-            }, function(error, message) {
-                if (error) {
-                    console.log(error.message);
-                } else {
-                    console.log(message.body);
-                }
-            });
-        }); 
-    },
-    start: true,
-    timeZone: 'America/Los_Angeles' 
-});
-noonTimer.start();
-
 /* Pricing notification sent via SMS */
 var priceNotificationAfternoon = new CronJob({
     cronTime: '00 00 13 * * 0-6',
