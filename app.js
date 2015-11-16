@@ -113,7 +113,7 @@ morningNotifcation.start();
 
 /* Pricing notification sent via SMS */
 var priceNotificationAfternoon = new CronJob({
-    cronTime: '00 00 13 * * 0-6',
+    cronTime: '00 00 12 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
         request({
@@ -153,7 +153,7 @@ priceNotificationAfternoon.start()
 
 /* Pricing notification sent via SMS  */
 var priceNotificationEvening = new CronJob({
-    cronTime: '00 00 17 * * 0-6',
+    cronTime: '00 30 16 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
         request({
