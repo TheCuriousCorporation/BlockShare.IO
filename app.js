@@ -156,34 +156,33 @@ var priceNotificationEvening = new CronJob({
     cronTime: '00 30 16 * * 0-6',
     //cronTime: '* * * * * *',
     onTick: function() {
-        request({
-            url: buy,
-            json: true
-        }, function(error, response, data) {
-            var btcPrice = data.data.amount;
-            if (!error && response.statusCode == 200) {
-                request({
-                    url: spot,
-                    json: true
-                }, function(error, response, data) {
-                    var btcSpot = data.data.amount;
-                    if (!error && response.statusCode == 200) {
-                        client.messages.create({
-                            to: '+12069998676',
-                            from: '+12069716727',
-                            mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
-                            body: "The current spot price is $" + btcSpot + " and the buy price is $" + btcPrice + "."
-                        }, function(error, message) {
-                            if (error) {
-                                console.log(error.message);
-                            } else {
-                                console.log(message.body);
-                            }
-                        });
-                    }
-                });
-            }
-        });
+        chain.getAddress(address, function(error, data) {
+            var getBalance = data[0].total.balance / 100000000.0;
+            var balance = getBalance.toFixed(4);
+            request({
+                url: spot,
+                json: true
+            }, function(error, response, data) {
+                var price = data.data.amount;
+                if (!error && response.statusCode == 200) {
+                    var combineBalance = price * balance;
+                    var newBalance = combineBalance.toFixed(2)
+                    client.messages.create({
+                        to: '+12069998676',
+                        from: '+12069716727',
+                        mediaUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRttCcps5FEKnu9DKPXOodQ7wb2iw1lxWFQFmCq3MDvZfaJ0BYyvw",
+                        body: 'You have a balance of $' + newBalance + ' or (' + balance 
+                                + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
+                    }, function(error, message) {
+                        if (error) {
+                            console.log(error.message)
+                        } else {
+                            console.log(message.body);
+                        }
+                    });
+                }
+            });
+        }); 
     },
     start: true,
     timeZone: 'America/Los_Angeles' 
