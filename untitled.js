@@ -46,3 +46,5 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
     console.log('BlockShare.IO data running on port', app.get('port'));
 });
+
+/* This code is just test code and is not used in the app on production */
