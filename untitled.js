@@ -32,6 +32,16 @@ var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
 var url = 'https://api.coinbase.com/v2/prices/buy';
 var spot = 'https://api.coinbase.com/v2/prices/spot';
 
+/* This is wrong */
+var template = {
+    input: [{
+        address: address
+    }],
+    output: [{
+        address: address
+    }]
+}
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -47,4 +57,4 @@ app.listen(app.get('port'), function() {
     console.log('BlockShare.IO data running on port', app.get('port'));
 });
 
-/* This code is just test code and is not used in the app on production */
+
