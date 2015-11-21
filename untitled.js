@@ -37,6 +37,17 @@ var sendAddress = '<Insert Address>';
 var privateKey = '<Insert Private Key';
 var amount = 100000;
 
+var template = {
+    inputs: [{
+        address: address,
+        private_key: privateKey
+    }],
+    outputs: [{
+        address: sendAddress,
+        amount: amount
+    }]
+};
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
