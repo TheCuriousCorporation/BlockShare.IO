@@ -53,8 +53,8 @@ var priceNotification = new CronJob({
                     var btcSpot = data.data.amount;
                     if (!error && response.statusCode == 200) {
                         client.messages.create({
-                            to: '+12069998676',
-                            from: '+12069716727',
+                            to: '<Personal Phone Number>',
+                            from: '<Personal Phone Number>',
                             mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
                             body: "The current spot price is $" + btcSpot + " and the buy price is $" + btcPrice + "."
                         }, function(error, message) {
@@ -91,8 +91,8 @@ var morningNotifcation = new CronJob({
                     var combineBalance = price * balance;
                     var newBalance = combineBalance.toFixed(2)
                     client.messages.create({
-                        to: '+12069998676',
-                        from: '+12069716727',
+                        to: '<Personal Phone Number>',
+                        from: '<Personal Phone Number>',
                         mediaUrl: "http://2.bp.blogspot.com/-PooEVWpM8a8/UO3gbc_55UI/AAAAAAAAFbA/HD8oaqtUzFs/s1600/liz-lemon.gif",
                         body: 'You have a balance of $' + newBalance + ' or (' + balance 
                                 + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
@@ -130,8 +130,8 @@ var priceNotificationAfternoon = new CronJob({
                     var btcSpot = data.data.amount;
                     if (!error && response.statusCode == 200) {
                         client.messages.create({
-                            to: '+12069998676',
-                            from: '+12069716727',
+                            to: '<Personal Phone Number>',
+                            from: '<Personal Phone Number>',
                             mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
                             body: "The current spot price is $" + btcSpot + " and the buy price is $" + btcPrice + "."
                         }, function(error, message) {
@@ -169,8 +169,8 @@ var priceNotificationEvening = new CronJob({
                     var combineBalance = price * balance;
                     var newBalance = combineBalance.toFixed(2)
                     client.messages.create({
-                        to: '+12069998676',
-                        from: '+12069716727',
+                        to: '<Personal Phone Number>',
+                        from: '<Personal Phone Number>',
                         mediaUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRttCcps5FEKnu9DKPXOodQ7wb2iw1lxWFQFmCq3MDvZfaJ0BYyvw",
                         body: 'You have a balance of $' + newBalance + ' or (' + balance 
                                 + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
@@ -203,8 +203,8 @@ var VolatilityIndex = new CronJob({
             var vol = str.toFixed(2);
             if (!error && response.statusCode == 200) {
                 client.messages.create({
-                    to: '+12069998676',
-                    from: '+12069716727',
+                    to: '<Personal Phone Number>',
+                    from: '<Personal Phone Number>',
                     mediaUrl: 'http://i.imgur.com/m3ftf8D.gif',
                     body: 'The daily Bitcoin Volatility Index is at ' + vol + '%.'
                 }, function(error, message) {
@@ -240,8 +240,8 @@ var priceNotificationNight = new CronJob({
                     var btcSpot = data.data.amount;
                     if (!error && response.statusCode == 200) {
                         client.messages.create({
-                            to: '+12069998676',
-                            from: '+12069716727',
+                            to: '<Personal Phone Number>',
+                            from: '<Personal Phone Number>',
                             mediaUrl: 'http://1.bp.blogspot.com/-vfDJM0J2nTE/UuW_Rd7m-yI/AAAAAAAACjY/Ghgo9Pou_yU/s1600/btc+7.gif',
                             body: "The current spot price is $" + btcSpot + " and the buy price is $" + btcPrice + "."
                         }, function(error, message) {
@@ -278,8 +278,8 @@ var eveningNotifcation = new CronJob({
                     var combineBalance = price * balance;
                     var newBalance = combineBalance.toFixed(2);
                     client.messages.create({
-                        to: '+12069998676',
-                        from: '+12069716727',
+                        to: '<Personal Phone Number>',
+                        from: '<Personal Phone Number>',
                         mediaUrl: "https://media4.giphy.com/media/GMIbzgzyS4pws/200_s.gif",
                         body: 'You have a balance of $' + newBalance + ' or (' + balance 
                                 + ') Bitcoins in your wallet. The current spot price is $' + price + '.'
@@ -316,8 +316,8 @@ conn.onmessage = function (ev) {
     var confirm = x.payload.confirmations;
     if (data >= '0.00000000001' && confirm < '1') {
         client.messages.create({
-            to: '+12069998676',
-            from: '+12069716727',
+            to: '<Personal Phone Number>',
+            from: '<Personal Phone Number>',
             body: 'You just received ' + data + ' Bitcoins!',
             mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
             //mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
