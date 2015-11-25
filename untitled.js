@@ -49,7 +49,11 @@ var template = {
 };
 
 chain.transact(template, function(err, data) {
-  // add code here
+  if (err) {
+    return err;
+  } else {
+    console.log(data);
+  }
 });
 
 

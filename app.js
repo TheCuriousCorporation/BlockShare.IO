@@ -30,6 +30,7 @@ var chain = new Chain({
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
+var address = '<Insert Your Bitcoin Address>';
 var buy = 'https://api.coinbase.com/v2/prices/buy'; // => var x = data.data.amount;
 var sell = 'https://api.coinbase.com/v2/prices/sell'; // => var x = data.data.amount;
 var spot = 'https://api.coinbase.com/v2/prices/spot'; // => var x = data.data.amount;
