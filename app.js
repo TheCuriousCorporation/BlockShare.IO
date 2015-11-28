@@ -29,6 +29,7 @@ var chain = new Chain({
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
 var CronJob = require('cron').CronJob;
 var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
+var sendAddress = '1Px1iWYzA16P3kskuSQPLhhshcT6kSabY1';
 var buy = 'https://api.coinbase.com/v2/prices/buy'; // => var x = data.data.amount;
 var sell = 'https://api.coinbase.com/v2/prices/sell'; // => var x = data.data.amount;
 var spot = 'https://api.coinbase.com/v2/prices/spot'; // => var x = data.data.amount;
@@ -305,7 +306,7 @@ var WebSocket = require('ws');
 var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
 
 conn.onopen = function (ev) {
-    var req = {type: "address", address: address, block_chain: "bitcoin"};
+    var req = {type: "address", address: sendAddress, block_chain: "bitcoin"};
     conn.send(JSON.stringify(req));
 };
 
@@ -347,3 +348,7 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
     console.log('BlockShare.IO data running on port', app.get('port'));
 });
+
+/* Principles for the Development of a Complete Mind: Study the science of art. 
+   Study the art of science. Develop your senses — especially learn how to see. 
+   Realize that everything connects to everything else. */
