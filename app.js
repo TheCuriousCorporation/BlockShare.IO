@@ -11,19 +11,18 @@ var express = require('express');
 var app = express();
 var request = require("request");
 
-/* Setting up Twilio Account ID and Authorization Tokens */
-var accountSid = 'AC4e2633202eec2d81ec69ce915a4cf09c';
-var authToken = 'b16545ba5d69db808155a46d08a3f256';
-var twilio = require('twilio');
-var client = new twilio.RestClient(accountSid, authToken);
-
-/* Setting up Chain Account ID, Secret, and setting Blockchain */
 var Chain = require('chain-node');
 var chain = new Chain({
-    keyId: 'e44df67bb29b9576b60a34e2e423b2df',
-    keySecret: '82ae4198214a0d8a6019b3fcf58471f9',
+    keyId: 'oops',
+    keySecret: 'oops',
     blockChain: 'bitcoin'
 });
+
+/* Setting up Twilio Account ID and Authorization Tokens */
+var accountSid = 'oops';
+var authToken = 'oops';
+var twilio = require('twilio');
+var client = new twilio.RestClient(accountSid, authToken);
 
 
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
