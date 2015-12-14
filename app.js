@@ -27,7 +27,7 @@ var client = new twilio.RestClient(accountSid, authToken);
 
 /* This code runs to send a daily update of a Bitcoin price and personal wallet amount. */
 var CronJob = require('cron').CronJob;
-var address = '1MwpnZhofThTc4nRd9Jte2BmQqfyDfzJDo';
+var address = '1GG3sg3Etp5VjfV5j2S2fZ9DpNsXqAKtWA';
 var sendAddress = '1Px1iWYzA16P3kskuSQPLhhshcT6kSabY1';
 var buy = 'https://api.coinbase.com/v2/prices/buy'; // => var x = data.data.amount;
 var sell = 'https://api.coinbase.com/v2/prices/sell'; // => var x = data.data.amount;
@@ -297,41 +297,6 @@ var eveningNotifcation = new CronJob({
     timeZone: 'America/Los_Angeles' 
 });
 eveningNotifcation.start();
-
-
-/* This code runs when you receive any Bitcoin, sending an SMS to your phone number.  */
-
-var WebSocket = require('ws');
-var conn = new WebSocket("wss://ws.chain.com/v2/notifications");
-
-conn.onopen = function (ev) {
-    var req = {type: "address", address: sendAddress, block_chain: "bitcoin"};
-    conn.send(JSON.stringify(req));
-};
-
-conn.onmessage = function (ev) {
-    var x = JSON.parse(ev.data);
-    var data = x.payload.received / 100000000.0;
-    var confirm = x.payload.confirmations;
-    if (data >= '0.00000000001' && confirm < '1') {
-        client.messages.create({
-            to: '+12069998676',
-            from: '+12069716727',
-            body: 'You just received ' + data + ' Bitcoins!',
-            mediaUrl: "http://i.imgur.com/63WB3ZN.gif"
-            //mediaUrl: 'http://bitcoinmemes.com/wp-content/uploads/2014/02/2.jpg'
-        }, function(error, message) {
-            if (error) {
-                console.log(error.message);
-            } else {
-                console.log(message.body);
-            }
-        });
-    } else {
-        console.log(data);
-    }
-
-}; 
 
 /* Code to Add */
 // Sending SMS from a personal number to receive balance whenever you are curious.
